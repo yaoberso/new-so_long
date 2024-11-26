@@ -6,25 +6,20 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:12 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/21 14:20:48 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:45:24 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "collect.h"
-#include "get_next_line.h"
-#include "map.h"
-#include "player.h"
-#include "utils.h"
-#include "ft_printf.h"
+#include "so_long.h"
 
-typedef struct s_game
+/*typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 	t_tiles		*tiles;
 	t_player	*player;
 	char		**map;
-}				t_game;
+}				t_game;*/
 
 void	*create_window(void *mlx, char **map)
 {
@@ -78,11 +73,11 @@ int	initialize_game(int argc, char **argv, t_game *game)
 	return (0);
 }
 
-
 int	exit_program(void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game	*game;
 
+	game = (t_game *)param;
 	free_map(game->map);
 	free_tiles(game->mlx, game->tiles);
 	free(game->player);
@@ -98,7 +93,8 @@ int	main(int argc, char **argv)
 		return (1);
 	trim_newline(game.map);
 	if (verif_map(game.map, 'P') == 0 || verif_map(game.map, 'E') == 0
-		|| verif_map(game.map, 'A') == 0 || check_map_rectangular(game.map) == 0)
+		|| verif_map(game.map, 'A') == 0 || check_map_rectangular(game.map) == 0
+		|| check_wall(game.map) == 0 || check_other_carac(game.map) == 0)
 	{
 		ft_printf("map non valide\n");
 		free_map(game.map);
@@ -113,9 +109,7 @@ int	main(int argc, char **argv)
 	draw_player(game.mlx, game.window, game.player);
 	mlx_hook(game.window, 17, 0L, exit_program, (void *)&game);
 	mlx_loop(game.mlx);
-	free_map(game.map);
-	free_tiles(game.mlx, game.tiles);
-	free(game.player);
+	free_main(&game);
 	mlx_destroy_window(game.mlx, game.window);
 	return (0);
 }

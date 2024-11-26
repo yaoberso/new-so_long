@@ -6,41 +6,11 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:54 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/20 12:44:43 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:15:46 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-
-void	free_tiles(void *mlx, t_tiles *tiles)
-{
-	if (tiles == NULL)
-		return ;
-	mlx_destroy_image(mlx, tiles->cag);
-	mlx_destroy_image(mlx, tiles->cbd);
-	mlx_destroy_image(mlx, tiles->cbg);
-	mlx_destroy_image(mlx, tiles->cad);
-	mlx_destroy_image(mlx, tiles->db);
-	mlx_destroy_image(mlx, tiles->dh);
-	mlx_destroy_image(mlx, tiles->dd);
-	mlx_destroy_image(mlx, tiles->dg);
-	mlx_destroy_image(mlx, tiles->plein);
-	mlx_destroy_image(mlx, tiles->water);
-	free(tiles);
-}
+#include "so_long.h"
 
 char	**load_map(const char *filename)
 {
@@ -74,7 +44,8 @@ char	**load_map(const char *filename)
 		return (NULL);
 	}
 	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		map[i] = ft_strdup(line);
 		free(line);
@@ -85,6 +56,7 @@ char	**load_map(const char *filename)
 			return (NULL);
 		}
 		i++;
+		line = get_next_line(fd);
 	}
 	map[i] = NULL;
 	close(fd);
@@ -169,7 +141,7 @@ void	place_tiles(void *mlx, void *window, t_tiles *tiles, char **map)
 			if (tile != NULL)
 			{
 				mlx_put_image_to_window(mlx, window, tile, x * TILE_SIZE, y
-						* TILE_SIZE);
+					* TILE_SIZE);
 			}
 			x++;
 		}

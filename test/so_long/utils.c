@@ -6,11 +6,11 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:18:39 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/20 11:34:42 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:54:25 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "so_long.h"
 
 int	ft_strcol(char *s)
 {

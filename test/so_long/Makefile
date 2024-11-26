@@ -18,7 +18,7 @@ MLX     = minilibx/libmlx.a -lz -framework OpenGL -framework AppKit -fsanitize=a
 OBJS    = $(SRCS:.c=.o)
 
 # FICHIERS SOURCES
-SRCS    = utils2.c player.c map.c main.c gnl/get_next_line.c gnl/get_next_line_utils.c utils.c collect.c printf/ft_printf.c printf/ft_putnbr.c printf/ft_putchar.c printf/ft_puthex_lower.c printf/ft_puthex_upper.c printf/ft_putpointer.c printf/ft_putstr.c printf/ft_putunsint.c
+SRCS    = free.c verif_map.c player.c map.c main.c gnl/get_next_line.c gnl/get_next_line_utils.c utils.c collect.c printf/ft_printf.c printf/ft_putnbr.c printf/ft_putchar.c printf/ft_puthex_lower.c printf/ft_puthex_upper.c printf/ft_putpointer.c printf/ft_putstr.c printf/ft_putunsint.c
 
 # Règle de compilation principale
 all: $(NAME)

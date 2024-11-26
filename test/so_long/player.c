@@ -6,11 +6,11 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:26 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/20 13:27:36 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:52:16 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "so_long.h"
 
 #define TILE_SIZE 64
 
@@ -81,24 +81,24 @@ void	check_exit_condition(t_player *player, char **map)
 void	move_player(int keycode, t_player *player, char **map)
 {
 	static int	count = 0;
-	int	new_x;
-	int	new_y;
-	int	i;
-	int	jsp;
+	int			new_x;
+	int			new_y;
+	int			len_y;
+	int			len_x;
 
 	new_x = player->x;
 	new_y = player->y;
-	i = 0;
-	jsp = ft_strlen(map[0]);
+	len_y = 0;
+	len_x = ft_strlen(map[0]);
 	check_new_coord(keycode, &new_x, &new_y, player);
-	while (map[i] != NULL)
-		i++;
-	if (new_x >= 0 && new_x < jsp && new_y >= 0 && new_y < i)
+	while (map[len_y] != NULL)
+		len_y++;
+	if (new_x >= 0 && new_x < len_x && new_y >= 0 && new_y < len_y)
 	{
 		if (map[new_y][new_x] == 'A')
 			map[new_y][new_x] = '0';
 		if ((keycode == 0 || keycode == 1 || keycode == 2 || keycode == 13)
-			 && map[new_y][new_x] != 'M' && map[new_y][new_x] != 'C')
+			&& map[new_y][new_x] != 'M' && map[new_y][new_x] != 'C')
 		{
 			count++;
 			ft_printf("compteur de deplacement: %d\n", count);

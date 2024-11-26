@@ -6,11 +6,11 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:36 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/19 11:39:21 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:15:36 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "collect.h"
+#include "so_long.h"
 
 void	draw_collect(void *mlx, void *window, char **map)
 {
