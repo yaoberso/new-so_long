@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:10:43 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/02 12:29:22 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:50:09 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,8 @@ int	check_paths(char **map)
 	if (remaining_targets(map_copy))
 	{
 		free_map(map_copy);
-		{
-			ft_printf("map avec aucun chemin valide\n");
-			return (0);
-		}
+		ft_printf("map avec aucun chemin valide\n");
+		return (0);
 	}
 	free_map(map_copy);
 	return (1);

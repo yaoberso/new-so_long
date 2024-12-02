@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:56:46 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/02 12:13:37 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:19:17 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_game
 	char		**map;
 }				t_game;
 
+void			load_tile_images(void *mlx, t_tiles *tiles, int *width,
+					int *height);
 int				remaining_targets(char **map);
 int				cherche_collects(char **map);
 int				check_paths(char **map);
