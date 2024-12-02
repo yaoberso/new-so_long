@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:26 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/26 13:52:16 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:25:06 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	check_new_coord(int keycode, int *new_x, int *new_y, t_player *player)
 
 void	check_exit_condition(t_player *player, char **map)
 {
-	if (cherche_collect(map) == 0)
+	if (cherche_collects(map) == 0)
 	{
 		free(player);
 		mlx_destroy_window(player->mlx, player->window);

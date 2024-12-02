@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:56:46 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/26 13:57:48 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:13:37 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ typedef struct s_game
 	char		**map;
 }				t_game;
 
+int				remaining_targets(char **map);
+int				cherche_collects(char **map);
+int				check_paths(char **map);
 void			free_main(t_game *game);
 void			free_map(char **map);
 void			free_tiles(void *mlx, t_tiles *tiles);
@@ -88,7 +91,7 @@ int				ft_strcol(char *str);
 char			*ft_strdup(char *str);
 int				cherche_py(char **map);
 int				cherche_px(char **map);
-int				cherche_collect(char **map);
+void			cherche_collect(char **map, int *x, int *y);
 void			trim_newline(char **map);
 int				verif_map(char **map, char c);
 int				check_wall(char **map);

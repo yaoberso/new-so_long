@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:48:49 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/26 13:12:45 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:36:25 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	check_map_rectangular(char **map)
 		while (map[i][current_length] != '\0')
 			current_length++;
 		if (current_length != length)
+		{
+			ft_printf("map non rectangulaire\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -72,6 +75,7 @@ int	verif_map(char **map, char c)
 		}
 		y++;
 	}
+	ft_printf("caractere %c manquant\n", c);
 	return (0);
 }
 
@@ -91,27 +95,39 @@ int	check_wall(char **map)
 	while (map[0][x] != '\0')
 	{
 		if (map[0][x] != 'M')
+		{
+			ft_printf("map non entouree de murs\n");
 			return (0);
+		}
 		x++;
 	}
 	while (map[len_y - 1][x] != '\0')
 	{
 		if (map[len_y - 1][x] != 'M')
+		{
+			ft_printf("map non entouree de murs\n");
 			return (0);
+		}
 		x++;
 	}
 	y = 0;
 	while (map[y] != NULL)
 	{
 		if (map[y][0] != 'M')
+		{
+			ft_printf("map non entouree de murs\n");
 			return (0);
+		}
 		y++;
 	}
 	y = 0;
 	while (map[y] != NULL)
 	{
 		if (map[y][len_x - 1] != 'M')
+		{
+			ft_printf("map non entouree de murs\n");
 			return (0);
+		}
 		y++;
 	}
 	return (1);
@@ -133,7 +149,10 @@ int	check_other_carac(char **map)
 				&& map[y][x] != 'A' && map[y][x] != 'H' && map[y][x] != 'G'
 				&& map[y][x] != 'D' && map[y][x] != 'B' && map[y][x] != 'M'
 				&& map[y][x] != 'C' && map[y][x] != 'E')
+			{
+				ft_printf("caractere inconnu\n");
 				return (0);
+			}
 			x++;
 		}
 		y++;
