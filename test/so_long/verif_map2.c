@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:46:31 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/03 10:33:13 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:08:52 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_pe(char **map, char c)
 	}
 	if (count != 1)
 	{
-		ft_printf("nombre de %c incorrect");
+		ft_printf("Error\nnombre de %c incorrect");
 		return (0);
 	}
 	else

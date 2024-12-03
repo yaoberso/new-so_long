@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:48:49 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/03 10:32:35 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:08:41 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_map_rectangular(char **map)
 			current_length++;
 		if (current_length != length)
 		{
-			ft_printf("map non rectangulaire\n");
+			ft_printf("Error\nmap non rectangulaire\n");
 			return (0);
 		}
 		i++;
@@ -75,7 +75,7 @@ int	verif_map(char **map, char c)
 		}
 		y++;
 	}
-	ft_printf("caractere %c manquant\n", c);
+	ft_printf("Error\ncaractere %c manquant\n", c);
 	return (0);
 }
 
@@ -90,7 +90,7 @@ int	check_wall(char **map)
 		len_y++;
 	if (!check_borders(map, len_x, len_y))
 	{
-		ft_printf("map non entouree de murs\n");
+		ft_printf("Error\nmap non entouree de murs\n");
 		return (0);
 	}
 	return (1);
@@ -113,7 +113,7 @@ int	check_other_carac(char **map)
 				&& map[y][x] != 'D' && map[y][x] != 'B' && map[y][x] != 'M'
 				&& map[y][x] != 'C' && map[y][x] != 'E')
 			{
-				ft_printf("caractere inconnu\n");
+				ft_printf("Error\ncaractere inconnu\n");
 				return (0);
 			}
 			x++;
