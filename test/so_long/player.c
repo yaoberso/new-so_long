@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:26 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/11/28 12:25:06 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:44:34 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,28 @@ void	check_exit_condition(t_player *player, char **map)
 void	move_player(int keycode, t_player *player, char **map)
 {
 	static int	count = 0;
-	int			new_x;
-	int			new_y;
-	int			len_y;
-	int			len_x;
 
-	new_x = player->x;
-	new_y = player->y;
-	len_y = 0;
-	len_x = ft_strlen(map[0]);
-	check_new_coord(keycode, &new_x, &new_y, player);
-	while (map[len_y] != NULL)
-		len_y++;
-	if (new_x >= 0 && new_x < len_x && new_y >= 0 && new_y < len_y)
+	player->new_x = player->x;
+	player->new_y = player->y;
+	player->len_y = 0;
+	while (map[player->len_y] != NULL)
+		player->len_y++;
+	check_new_coord(keycode, &player->new_x, &player->new_y, player);
+	if (player->new_x >= 0 && player->new_x < ft_strlen(map[0])
+		&& player->new_y >= 0 && player->new_y < player->len_y
+		&& (keycode == 0 || keycode == 1 || keycode == 2 || keycode == 13))
 	{
-		if (map[new_y][new_x] == 'A')
-			map[new_y][new_x] = '0';
-		if ((keycode == 0 || keycode == 1 || keycode == 2 || keycode == 13)
-			&& map[new_y][new_x] != 'M' && map[new_y][new_x] != 'C')
+		if (map[player->new_y][player->new_x] == 'A')
+			map[player->new_y][player->new_x] = '0';
+		if (map[player->new_y][player->new_x] != 'M'
+			&& map[player->new_y][player->new_x] != 'C')
 		{
 			count++;
 			ft_printf("compteur de deplacement: %d\n", count);
-			player->x = new_x;
-			player->y = new_y;
+			player->x = player->new_x;
+			player->y = player->new_y;
 		}
-		if (map[new_y][new_x] == 'E')
+		if (map[player->new_y][player->new_x] == 'E')
 			check_exit_condition(player, map);
 	}
 }

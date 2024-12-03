@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:56:46 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/02 13:19:17 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:54:08 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct s_player
 	void		*mlx;
 	void		*window;
 	char		**map;
+	int			new_x;
+	int			new_y;
+	int			len_y;
+	int			len_x;
 	t_tiles		*tiles;
 }				t_player;
 
@@ -71,6 +75,11 @@ typedef struct s_game
 	char		**map;
 }				t_game;
 
+int				load_map_lines(const char *filename, char **map);
+int				count_lines(const char *filename);
+void			*get_tile(char tile_char, t_tiles *tiles);
+int				check_borders(char **map, int len_x, int len_y);
+int				check_pe(char **map, char c);
 void			load_tile_images(void *mlx, t_tiles *tiles, int *width,
 					int *height);
 int				remaining_targets(char **map);

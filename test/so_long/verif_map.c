@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:48:49 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/02 12:36:25 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:32:35 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,54 +81,17 @@ int	verif_map(char **map, char c)
 
 int	check_wall(char **map)
 {
-	int	x;
-	int	y;
 	int	len_x;
 	int	len_y;
 
-	x = 0;
-	y = 0;
 	len_x = ft_strlen(map[0]);
 	len_y = 0;
 	while (map[len_y] != NULL)
 		len_y++;
-	while (map[0][x] != '\0')
+	if (!check_borders(map, len_x, len_y))
 	{
-		if (map[0][x] != 'M')
-		{
-			ft_printf("map non entouree de murs\n");
-			return (0);
-		}
-		x++;
-	}
-	while (map[len_y - 1][x] != '\0')
-	{
-		if (map[len_y - 1][x] != 'M')
-		{
-			ft_printf("map non entouree de murs\n");
-			return (0);
-		}
-		x++;
-	}
-	y = 0;
-	while (map[y] != NULL)
-	{
-		if (map[y][0] != 'M')
-		{
-			ft_printf("map non entouree de murs\n");
-			return (0);
-		}
-		y++;
-	}
-	y = 0;
-	while (map[y] != NULL)
-	{
-		if (map[y][len_x - 1] != 'M')
-		{
-			ft_printf("map non entouree de murs\n");
-			return (0);
-		}
-		y++;
+		ft_printf("map non entouree de murs\n");
+		return (0);
 	}
 	return (1);
 }

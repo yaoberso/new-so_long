@@ -6,7 +6,7 @@
 /*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:12 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/02 12:30:25 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:00:08 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	if (initialize_game(argc, argv, &game))
 		return (1);
 	trim_newline(game.map);
-	if (verif_map(game.map, 'P') == 0 || verif_map(game.map, 'E') == 0
+	if (check_pe(game.map, 'P') == 0 || check_pe(game.map, 'E') == 0
 		|| verif_map(game.map, 'A') == 0 || check_map_rectangular(game.map) == 0
 		|| check_wall(game.map) == 0 || check_other_carac(game.map) == 0
 		|| check_paths(game.map) == 0)
