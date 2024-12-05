@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:12 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/04 12:19:06 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:28:22 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	initialize_game(int argc, char **argv, t_game *game)
 {
 	if (argc != 2)
 	{
-		ft_printf("Erreur\nAucune map entree");
+		ft_printf("Erreur\nAucune map entree\n");
 		return (0);
 	}
 	game->mlx = mlx_init();
@@ -74,6 +74,7 @@ int	exit_program(void *param)
 	free_tiles(game->mlx, game->tiles);
 	free(game->player);
 	mlx_destroy_window(game->mlx, game->window);
+	game->player = NULL;
 	exit(0);
 }
 
@@ -92,13 +93,13 @@ int	main(int argc, char **argv)
 		free_tiles(game.mlx, game.tiles);
 		free(game.player);
 		mlx_destroy_window(game.mlx, game.window);
-		return (1);
+		return (0);
 	}
 	mlx_key_hook(game.window, handle_keypress, game.player);
 	place_tiles(game.mlx, game.window, game.tiles, game.map);
 	draw_collect(game.mlx, game.window, game.map);
 	draw_player(game.mlx, game.window, game.player);
-	mlx_hook(game.window, 17, 0L, exit_program, (void *)&game);
+	mlx_hook(game.window, 17, 0, exit_program, &game);
 	mlx_loop(game.mlx);
 	free_main(&game);
 	mlx_destroy_window(game.mlx, game.window);

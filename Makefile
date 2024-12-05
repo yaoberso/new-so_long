@@ -14,7 +14,7 @@ NAME    = so_long
 
 CFLAGS  = -Wall -Wextra -Werror -g
 CC      = gcc -Iminilibx -Ignl -Iprintf
-MLX     = minilibx/libmlx.a -lz -framework OpenGL -framework AppKit #-fsanitize=address
+MLX     = minilibx/libmlx.a -lz -framework OpenGL -framework AppKit -fsanitize=address
 OBJS    = $(SRCS:.c=.o)
 
 # FICHIERS SOURCES

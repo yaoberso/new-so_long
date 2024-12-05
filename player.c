@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:52:26 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/03 10:44:34 by yaoberso         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:24:09 by yann             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,25 @@ t_player	*init_player(int start_x, int start_y, char **map, void *window)
 void	check_new_coord(int keycode, int *new_x, int *new_y, t_player *player)
 {
 	if (keycode == 13)
-	{
 		(*new_y)--;
-	}
 	else if (keycode == 0)
-	{
 		(*new_x)--;
-	}
 	else if (keycode == 1)
-	{
 		(*new_y)++;
-	}
 	else if (keycode == 2)
-	{
 		(*new_x)++;
-	}
 	else if (keycode == 53)
 	{
-		free(player);
-		mlx_destroy_window(player->mlx, player->window);
+		if (player)
+		{
+			if (player->mlx && player->window)
+			{
+				mlx_destroy_window(player->mlx, player->window);
+				player->window = NULL;
+			}
+			free(player);
+			player = NULL;
+		}
 		exit(0);
 	}
 }
@@ -72,8 +72,15 @@ void	check_exit_condition(t_player *player, char **map)
 {
 	if (cherche_collects(map) == 0)
 	{
-		free(player);
-		mlx_destroy_window(player->mlx, player->window);
+		if (player)
+		{
+			if (player->mlx && player->window)
+			{
+				mlx_destroy_window(player->mlx, player->window);
+			}
+			free(player);
+			player = NULL;
+		}
 		exit(0);
 	}
 }
