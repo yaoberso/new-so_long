@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yann <yann@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yaoberso <yaoberso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:51:12 by yaoberso          #+#    #+#             */
-/*   Updated: 2024/12/05 19:28:22 by yann             ###   ########.fr       */
+/*   Updated: 2024/12/10 13:32:36 by yaoberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int	initialize_game(int argc, char **argv, t_game *game)
 	}
 	game->mlx = mlx_init();
 	game->map = load_map(argv[1]);
+	if (!game->map)
+	{
+		return (ft_printf("Erreur\nMap invalide\n"), 0);
+	}
 	game->window = create_window(game->mlx, game->map);
 	game->tiles = load_tiles(game->mlx);
 	game->player = init_player(cherche_px(game->map), cherche_py(game->map),

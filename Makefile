@@ -12,9 +12,9 @@
 
 NAME    = so_long
 
-CFLAGS  = -Wall -Wextra -Werror -g
+CFLAGS  = -Wall -Wextra -Werror -g -fsanitize=address
 CC      = gcc -Iminilibx -Ignl -Iprintf
-MLX     = minilibx/libmlx.a -lz -framework OpenGL -framework AppKit -fsanitize=address
+MLX     = minilibx/libmlx.a -lz -framework OpenGL -framework AppKit
 OBJS    = $(SRCS:.c=.o)
 
 # FICHIERS SOURCES
